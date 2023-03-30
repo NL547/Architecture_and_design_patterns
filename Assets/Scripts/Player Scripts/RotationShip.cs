@@ -4,15 +4,15 @@ using UnityEngine;
 
 internal sealed class RotationShip : IRotation
 {
-    private readonly Transform _transform;
-    public RotationShip(Transform transform)
+    public float Speed { get; }
+
+    public RotationShip(float speed)
     {
-        _transform = transform;
+        Speed = speed;
     }
-    public void Rotation(Vector3 direction)
+    public void Rotation(Rigidbody2D rigidbody, float horizontal, float deltaTime)
     {
-        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _transform.transform.rotation = Quaternion.AngleAxis(angle,
-        Vector3.forward);
+        float turnDirection = horizontal * Speed * deltaTime * -1f;
+        rigidbody.AddTorque(turnDirection);
     }
 }

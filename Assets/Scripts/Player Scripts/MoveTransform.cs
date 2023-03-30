@@ -12,10 +12,8 @@ internal class MoveTransform : IMove
         _transform = transform;
         Speed = speed;
     }
-    public void Move(float horizontal, float vertical, float deltaTime)
+    public void Move(Rigidbody2D rigidbody, float vertical, float deltaTime)
     {
-        var speed = deltaTime * Speed;
-        _move.Set(horizontal * speed, vertical * speed, 0.0f);
-        _transform.localPosition += _move;
+        rigidbody.AddForce(_transform.up * vertical * Speed);        
     }
 }

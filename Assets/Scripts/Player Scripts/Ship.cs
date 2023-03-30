@@ -12,13 +12,13 @@ internal sealed class Ship : IMove, IRotation
         _moveImplementation = moveImplementation;
         _rotationImplementation = rotationImplementation;
     }
-    public void Move(float horizontal, float vertical, float deltaTime)
+    public void Move(Rigidbody2D rigidbody, float vertical, float deltaTime)
     {
-        _moveImplementation.Move(horizontal, vertical, deltaTime);
+        _moveImplementation.Move(rigidbody, vertical, deltaTime);
     }
-    public void Rotation(Vector3 direction)
+    public void Rotation(Rigidbody2D rigidbody, float horizontal, float deltaTime)
     {
-        _rotationImplementation.Rotation(direction);
+        _rotationImplementation.Rotation(rigidbody, horizontal, deltaTime);
     }
     public void AddAcceleration()
     {

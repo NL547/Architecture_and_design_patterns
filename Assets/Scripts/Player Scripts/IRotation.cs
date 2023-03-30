@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IRotation
 {
-    void Rotation(Vector3 direction);
+    void Rotation(Rigidbody2D rigidbody, float horizontal, float deltaTime);
 }
