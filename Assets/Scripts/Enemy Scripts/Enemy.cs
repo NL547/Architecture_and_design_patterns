@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroid
 {
-    internal sealed class Player : MonoBehaviour
+    public class Enemy : EnemyVision
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _acceleration;
@@ -13,35 +13,23 @@ namespace Asteroid
         [SerializeField] private Transform _barrel;
         [SerializeField] private float _turnSpeed;
         private Rigidbody2D _rigidbody;
-        private Camera _camera;
-        private Ship _ship;
+        private EnemyShip _enemyShip;
+        private EnemyVision _enemyVision;
+        private EnemyAttack _enemyAttack;
 
         private void Start()
         {
-            _camera = Camera.main;
             var moveTransform = new AccelerationMove(transform, _speed,
             _acceleration);
             var rotation = new RotationShip(_turnSpeed);
-            _ship = new Ship(moveTransform, rotation);
+            _enemyShip = new EnemyShip(moveTransform, rotation);
             _rigidbody = GetComponent<Rigidbody2D>();
+            _enemyVision = gameObject.AddComponent<EnemyVision>();
+            _enemyAttack = gameObject.AddComponent<EnemyAttack>();
         }
         private void Update()
         {
-            _ship.Rotation(_rigidbody, Input.GetAxis("Horizontal"), Time.deltaTime);
-            _ship.Move(_rigidbody, Input.GetAxis("Vertical"), Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                _ship.AddAcceleration();
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                _ship.RemoveAcceleration();
-            }
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Bullet temAmmunition = Instantiate(_bullet, _barrel.position, _barrel.rotation);                
-                temAmmunition.Shoot(_barrel.up);
-            }
+
         }
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -56,5 +44,3 @@ namespace Asteroid
         }
     }
 }
-
-

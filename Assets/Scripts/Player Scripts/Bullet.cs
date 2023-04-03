@@ -16,7 +16,7 @@ namespace Asteroid
 
         void Update()
         {
-
+            
         }
 
         public void Shoot(Vector2 direction)
