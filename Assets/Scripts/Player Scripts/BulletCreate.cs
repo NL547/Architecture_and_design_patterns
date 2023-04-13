@@ -8,7 +8,6 @@ internal sealed class BulletCreate : MonoBehaviour
     private void Start()
     {
         var gameObjectBuilder = new BulletBuilder();
-        GameObject player =
-        gameObjectBuilder.Visual.Name("Laser").Sprite(_sprite).Physics.Rigidbody2D(5).BoxCollider2D();
+        GameObject player = gameObjectBuilder.Visual.Name("Laser").Sprite(_sprite).Physics.Rigidbody2D(5).BoxCollider2D();
     }
 }

@@ -971,15 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2442d8e10f5935e4c808734ea84153b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
-  viewAngle: 360
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  visibleTargets: []
+  target: {fileID: 0}
   _speed: 2
   _acceleration: 5
   _hp: 50
@@ -1045,7 +1037,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887553001}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7019547, w: 0.71222156}
   m_LocalPosition: {x: -10.01, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1053,7 +1045,7 @@ Transform:
   - {fileID: 2038716215}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.168}
 --- !u!50 &887553006
 Rigidbody2D:
   serializedVersion: 4

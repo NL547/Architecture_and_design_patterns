@@ -8,6 +8,7 @@ namespace Asteroid
     {
         public Rigidbody2D rigidbody;
         [SerializeField] float speed = 500;
+        [SerializeField] public int damage = 10;
 
         void Awake()
         {

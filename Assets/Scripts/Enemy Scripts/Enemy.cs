@@ -4,42 +4,29 @@ using UnityEngine;
 
 namespace Asteroid
 {
-    public class Enemy : EnemyVision
+    public class Enemy : MonoBehaviour
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private float _acceleration;
-        [SerializeField] private float _hp;
-        [SerializeField] private Bullet _bullet;
-        [SerializeField] private Transform _barrel;
-        [SerializeField] private float _turnSpeed;
-        private Rigidbody2D _rigidbody;
-        private EnemyShip _enemyShip;
-        private EnemyVision _enemyVision;
-        private EnemyAttack _enemyAttack;
+        public Rigidbody2D rigidbody;
+        public int maxHP;
+        public int currentHP;
 
-        private void Start()
+        protected virtual void Awake()
         {
-            var moveTransform = new AccelerationMove(transform, _speed,
-            _acceleration);
-            var rotation = new RotationShip(_turnSpeed);
-            _enemyShip = new EnemyShip(moveTransform, rotation);
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _enemyVision = gameObject.AddComponent<EnemyVision>();
-            _enemyAttack = gameObject.AddComponent<EnemyAttack>();
+            rigidbody = GetComponent<Rigidbody2D>();
+            if (rigidbody == null) rigidbody = gameObject.AddComponent<Rigidbody2D>();
+            rigidbody.gravityScale = 0;
         }
-        private void Update()
-        {
 
-        }
-        private void OnCollisionEnter2D(Collision2D other)
+        protected virtual void Start()
         {
-            if (_hp <= 0)
+            currentHP = maxHP;
+        }
+
+        protected virtual void Update()
+        {
+            if (currentHP <= 0)
             {
                 Destroy(gameObject);
-            }
-            else
-            {
-                _hp--;
             }
         }
     }
