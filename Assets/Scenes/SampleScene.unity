@@ -949,9 +949,9 @@ GameObject:
   m_Component:
   - component: {fileID: 887553005}
   - component: {fileID: 887553004}
-  - component: {fileID: 887553003}
   - component: {fileID: 887553007}
   - component: {fileID: 887553006}
+  - component: {fileID: 887553008}
   m_Layer: 0
   m_Name: Enemy spaceship
   m_TagString: Untagged
@@ -959,25 +959,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &887553003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887553001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2442d8e10f5935e4c808734ea84153b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  _speed: 2
-  _acceleration: 5
-  _hp: 50
-  _bullet: {fileID: 2100405549}
-  _barrel: {fileID: 2038716215}
-  _turnSpeed: 50
 --- !u!212 &887553004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1762,6 +1743,34 @@ PolygonCollider2D:
       - {x: 0.96999997, y: 4.36}
       - {x: 0.93, y: 4.18}
       - {x: 0.94, y: 4.16}
+--- !u!114 &887553008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887553001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad501e78406ea44ca5df54ad9eb2e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 0}
+  maxHP: 50
+  currentHP: 50
+  _speed: 1
+  _bullet: {fileID: 2100405549}
+  _barrel: {fileID: 2038716215}
+  _turnSpeed: 5
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  viewRadius: 10
+  viewAngle: 300
+  attackDistance: 5
 --- !u!1 &982126073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,7 +1783,7 @@ GameObject:
   - component: {fileID: 982126077}
   - component: {fileID: 982126075}
   - component: {fileID: 982126074}
-  - component: {fileID: 982126080}
+  - component: {fileID: 982126079}
   m_Layer: 6
   m_Name: Spaceship
   m_TagString: Player
@@ -1889,7 +1898,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &982126080
+--- !u!60 &982126079
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3151,6 +3160,55 @@ Transform:
   m_Father: {fileID: 982126078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1572991930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1572991932}
+  - component: {fileID: 1572991931}
+  m_Layer: 0
+  m_Name: Asteroid Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1572991931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572991930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccf39f771540c2478311a7ae242f7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefab: {fileID: -185034106979036532, guid: 9a90530ddf98ab44ead36dd315290ff8, type: 3}
+  trajectoryVariance: 15
+  spawnDistance: 15
+  spawnRate: 2
+  spawnAmount: 1
+--- !u!4 &1572991932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572991930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714978824
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3512,10 @@ PrefabInstance:
     - target: {fileID: 1695182840380892365, guid: 118456a74b11c4946a9ff93d1ab57bed, type: 3}
       propertyPath: m_Name
       value: laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695182840380892365, guid: 118456a74b11c4946a9ff93d1ab57bed, type: 3}
+      propertyPath: m_TagString
+      value: Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118456a74b11c4946a9ff93d1ab57bed, type: 3}

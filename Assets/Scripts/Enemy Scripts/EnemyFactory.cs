@@ -5,8 +5,8 @@ using UnityEngine;
 
 public static class EnemyFactory
 {
-    public static Enemy CreateEnemy()
-    {
-        return new Enemy();
-    }
+    //public static EnemyShip CreateEnemy()
+    //{
+    //    return new EnemyShip();
+    //}
 }
